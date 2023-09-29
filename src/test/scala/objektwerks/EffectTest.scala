@@ -27,12 +27,12 @@ final class EffectTest extends AnyFunSuite with Matchers:
     ot shouldBe 1
 
   test("map"):
-    val o: Int > Options = Options.get(Some(1))
+    val o: Int > Options = Options.get( Some(1) )
     val t: Int > (Options with Tries) = o
     o.map(v => t.map(_ + v)) shouldBe 2
 
   test("flatmap"):
-    val o: Int > Options = Options.get(Some(1))
+    val o: Int > Options = Options.get( Some(1) )
     val t: Int > (Options with Tries) = o
     o.flatMap(v => t.map(_ + v)) shouldBe 2
 
@@ -46,11 +46,11 @@ final class EffectTest extends AnyFunSuite with Matchers:
       val c: Option[Try[Int]] > Any = Options.run(b)
       c.pure
 
-    optionsFirst( Options.get(Some(1)) ) shouldBe Success(Some(1) )
-    optionsFirst( Tries.get(Success(1)) ) shouldBe Success(Some(1) )
+    optionsFirst( Options.get(Some(1)) ) shouldBe Success( Some(1) )
+    optionsFirst( Tries.get(Success(1)) ) shouldBe Success( Some(1) )
 
-    triesFirst( Options.get(Some(1)) ) shouldBe Some(Success(1) )
-    triesFirst( Tries.get(Success(1)) ) shouldBe Some(Success(1) )
+    triesFirst( Options.get(Some(1)) ) shouldBe Some( Success(1) )
+    triesFirst( Tries.get(Success(1)) ) shouldBe Some( Success(1) )
 
   test("direct"):
     val direct: Int > (Tries with Options) =
