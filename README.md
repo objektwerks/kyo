@@ -9,3 +9,7 @@ Build
 Test
 ----
 1. sbt clean test
+
+Resources
+---------
+* [Kyo Github](https://github.com/getkyo/kyo#)
