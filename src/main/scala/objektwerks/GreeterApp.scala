@@ -8,5 +8,5 @@ object GreeterApp extends App:
     for
       _    <- Consoles.println("What is your name?")
       name <- Consoles.readln
-      _    <- Consoles.println(s"Greetings: $name")
+      _    <- Consoles.println(s"Greetings, $name!")
     yield ()
