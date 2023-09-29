@@ -53,19 +53,19 @@ final class EffectTest extends AnyFunSuite with Matchers:
     triesFirst( Tries.get(Success(1)) ) shouldBe Some(Success(1) )
 
   test("direct"):
-    val a: Int > (Tries with Options) =
-      defer:
-        val b: String = 
-          await( Options.get(Some(1)) )
-        val c: String = 
-          await( Tries.get(Try(1)) )
+    val direct: Int > (Tries with Options) =
+      defer {
+        val b: Int = await( Options.get( Some(1) ) )
+        val c: Int = await( Tries.get( Try(1) ) )
         b + c
+      }
 
-    val b: Int > (Tries with Options) =
+    val classic: Int > (Tries with Options) =
       Options.get( Some(1) ).map { b =>
         Tries.get( Try(1) ).map { c =>
           b + c
         }
       }
 
-      a shouldBe b
+    direct.map(i => i shouldBe 2)
+    classic.map(i => i shouldBe 2)
