@@ -7,6 +7,6 @@ import kyo.*
 
 class EffectTest extends AnyFunSuite with Matchers:
   test("empty") {
-    val a: Int > Any = 1
-    a.pure shouldBe 1
+    val i: Int > Any = 1
+    i.pure shouldBe 1
   }
