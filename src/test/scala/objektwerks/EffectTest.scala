@@ -6,6 +6,7 @@ import org.scalatest.matchers.should.Matchers
 import kyo.*
 import kyo.aborts.Aborts
 import kyo.direct.*
+import kyo.envs.Envs
 import kyo.ios.IOs
 import kyo.options.Options
 import kyo.tries.Tries
@@ -95,3 +96,14 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     val value: Int > IOs = IOs.value(1)
     value.map(i => i shouldBe 1)
+
+  test("envs"):
+    trait Db:
+      def count: Int > IOs 
+
+    val db: Db > Envs[Db] = Envs[Db].get
+
+    val count: Int > (Envs[Db ] with IOs) = db.map(_.count)
+
+    count shouldBe 1
+    
