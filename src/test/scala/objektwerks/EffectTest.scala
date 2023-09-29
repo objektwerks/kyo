@@ -10,7 +10,7 @@ import kyo.ios.IOs
 import kyo.options.Options
 import kyo.tries.Tries
 
-import scala.util.{Success, Try}
+import scala.util.{Random, Success, Try}
 
 final class EffectTest extends AnyFunSuite with Matchers:
   test("empty"):
@@ -90,5 +90,8 @@ final class EffectTest extends AnyFunSuite with Matchers:
     catching.map(i => i shouldBe 0)
 
   test("ios"):
-    val apply: Int > IOs = IOs(1)
-    apply.map(i => i shouldBe 1)
+    val apply: Int > IOs = IOs(Random.nextInt(1))
+    apply.map(i => i >= 1 shouldBe true)
+
+    val value: Int > IOs = IOs.value(1)
+    value.map(i => i shouldBe 1)
