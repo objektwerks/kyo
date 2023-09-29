@@ -20,3 +20,8 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val iot: Int > (Options with Tries) = io
     Options.run(io) shouldBe Some(1)
     Tries.run(iot) shouldBe Success(1)
+
+  test("map"):
+    val o: Int > Options = Options.get(Some(1))
+    val t: Int > (Options with Tries) = o
+    o.map(v => t.map(_ + v)) shouldBe 2
