@@ -4,6 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import kyo.*
+import kyo.aborts.Aborts
 import kyo.direct.*
 import kyo.options.Options
 import kyo.tries.Tries
@@ -73,3 +74,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     yield
       d shouldBe c
       d + c shouldBe 4
+
+  test("aborts"):
+    val right: Int > Aborts[String] = Aborts[String].get( Right(1) )
+    right.pure shouldBe 1
