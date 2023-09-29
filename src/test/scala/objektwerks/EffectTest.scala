@@ -70,4 +70,6 @@ final class EffectTest extends AnyFunSuite with Matchers:
     for
       d <- direct
       c <- classic
-    yield d + c shouldBe 4
+    yield
+      d shouldBe c
+      d + c shouldBe 4
