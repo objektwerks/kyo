@@ -103,7 +103,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     val db: Db > Envs[Db] = Envs[Db].get
 
-    val count: Int > (Envs[Db ] with IOs) = db.map(_.count)
+    val count: Int > (Envs[Db] with IOs) = db.map(_.count)
 
-    count shouldBe 1
+    val result: Int > IOs = Envs[Db].run(db)(count)
     
