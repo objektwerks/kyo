@@ -77,4 +77,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
   test("aborts"):
     val right: Int > Aborts[String] = Aborts[String].get( Right(1) )
-    right.pure shouldBe 1
+    right.map(i => i shouldBe 1)
+
+    val left: Int > Aborts[String] = Aborts[String].get( Left("Failure!") )
+    left.map(i => i shouldBe 0)
