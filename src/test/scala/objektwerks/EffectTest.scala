@@ -67,5 +67,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
         }
       }
 
-    direct.map(i => i shouldBe 2)
-    classic.map(i => i shouldBe 2)
+    for
+      d <- direct
+      c <- classic
+    yield d + c shouldBe 4
