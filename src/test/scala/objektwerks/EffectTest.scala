@@ -6,6 +6,7 @@ import org.scalatest.matchers.should.Matchers
 import kyo.*
 import kyo.aborts.Aborts
 import kyo.direct.*
+import kyo.ios.IOs
 import kyo.options.Options
 import kyo.tries.Tries
 
@@ -87,3 +88,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     val catching: Int > Aborts[Exception] = Aborts[Exception].catching( throw new Exception("Execption") )
     catching.map(i => i shouldBe 0)
+
+  test("ios"):
+    val apply: Int > IOs = IOs(1)
+    apply.map(i => i shouldBe 1)
