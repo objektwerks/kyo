@@ -81,3 +81,9 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     val left: Int > Aborts[String] = Aborts[String].get( Left("Failure!") )
     left.map(i => i shouldBe 0)
+
+    val fail: Int > Aborts[String] = Aborts[String].fail("Fail!")
+    fail.map(i => i shouldBe 0)
+
+    val catching: Int > Aborts[Exception] = Aborts[Exception].catching( throw new Exception("Execption") )
+    catching.map(i => i shouldBe 0)
