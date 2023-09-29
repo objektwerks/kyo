@@ -7,7 +7,7 @@ import kyo.*
 import kyo.options.Options
 import kyo.tries.Tries
 
-import scala.util.Success
+import scala.util.{Success, Try}
 
 final class EffectTest extends AnyFunSuite with Matchers:
   test("empty"):
@@ -34,3 +34,19 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val o: Int > Options = Options.get(Some(1))
     val t: Int > (Options with Tries) = o
     o.flatMap(v => t.map(_ + v)) shouldBe 2
+
+  test("order"):
+    def optionsFirst(a: Int > (Options with Tries)): Try[Option[Int]] =
+      val b: Option[Int] > Tries = Options.run(a)
+      val c: Try[Option[Int]] > Any = Tries.run(b)
+      c.pure
+    def triesFirst(a: Int > (Options with Tries)): Option[Try[Int]] =
+      val b: Try[Int] > Options = Tries.run(a)
+      val c: Option[Try[Int]] > Any = Options.run(b)
+      c.pure
+
+    optionsFirst( Options.get(Some(1)) ) shouldBe Success(Some(1) )
+    optionsFirst( Tries.get(Success(1)) ) shouldBe Success(Some(1) )
+
+    triesFirst( Options.get(Some(1)) ) shouldBe Some(Success(1) )
+    triesFirst( Tries.get(Success(1)) ) shouldBe Some(Success(1) )
