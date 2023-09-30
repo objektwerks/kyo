@@ -125,3 +125,10 @@ final class EffectTest extends AnyFunSuite with Matchers:
       Resources.acquire(
         Source.fromFile("./LICENSE", Codec.UTF8.name)
       )
+
+    val wordCount: Int > IOs =
+      Resources.run(
+        source.map(file => file.mkString.split("\\W+").length)
+      )
+
+    wordCount.map(count => count  shouldBe 1427)
