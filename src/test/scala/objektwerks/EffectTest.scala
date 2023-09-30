@@ -115,5 +115,5 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val currentValue: Int > IOs = local.get
     currentValue.map(i => i shouldBe 1)
 
-    val newValue: Int > IOs = local.let(defaultValue)(currentValue.map(_ + 1))
-    newValue.map(i => i shouldBe 2)
+    val newValue: Int > IOs = local.let(11)(currentValue.map(_ + 1))
+    newValue.map(i => i shouldBe 12)
