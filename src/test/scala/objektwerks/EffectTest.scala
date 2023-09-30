@@ -170,7 +170,6 @@ final class EffectTest extends AnyFunSuite with Matchers:
     }
     IOs.run(ios)
 
-
   test("loggers"):
     val infoMessage = "*** Test log message."
     val logger: Logger = Loggers.init(getClass())
