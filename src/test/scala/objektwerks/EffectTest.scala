@@ -167,13 +167,13 @@ final class EffectTest extends AnyFunSuite with Matchers:
       val datetime = await( Clocks.run(clock) )
       datetime.toString.nonEmpty shouldBe true
       
-      await( logger.info(s"The current date and time: ${datetime}") )
+      await( logger.info(s"*** The current date and time: ${datetime}") )
     }
     IOs.run(app)
 
 
   test("loggers"):
-    val infoMessage = "test log message"
+    val infoMessage = "*** Test log message."
     val logger: Logger = Loggers.init(getClass())
     val info: Unit > IOs = logger.info(infoMessage)
     info.map(m => m shouldBe ())
