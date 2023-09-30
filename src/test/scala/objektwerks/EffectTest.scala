@@ -8,6 +8,7 @@ import kyo.aborts.Aborts
 import kyo.direct.*
 import kyo.envs.Envs
 import kyo.ios.IOs
+import kyo.locals.{Local, Locals}
 import kyo.options.Options
 import kyo.tries.Tries
 
@@ -106,3 +107,9 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     val query: Int > IOs = Envs[Db].run(db)(db.count)
     query.map(i => i shouldBe 1)
+
+  test("locals"):
+    val defaultValue = 1
+    val local: Local[Int] = Locals.init(defaultValue)
+    val currentValue: Int > IOs = local.get
+    currentValue.map(i => i shouldBe 1)
