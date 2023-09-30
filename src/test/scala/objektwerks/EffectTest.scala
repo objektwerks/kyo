@@ -163,9 +163,14 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val clock: Instant > Clocks = Clocks.now
     val logger: Logger = Loggers.init(getClass())
 
-    val datetime = clock.map(instant => instant.toString).pure
-    val logMessage: Unit > IOs = logger.info(s"The current date and time: ${datetime}")
-    IOs.run(logMessage)
+    val app: Unit > IOs = defer {
+      val datetime = await( Clocks.run(clock) )
+      datetime.toString.nonEmpty shouldBe true
+      
+      await( IOs.run( logger.info(s"The current date and time: ${datetime}") ) )
+    }
+    IOs.run(app)
+
 
   test("loggers"):
     val infoMessage = "test log message"
