@@ -156,7 +156,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val randoms: Int > Randoms = Randoms.nextInt
     randoms.map(i => i > 0 shouldBe true)
 
-  test("logger"):
+  test("loggers"):
     val infoMessage = "test log message"
     val logger: Logger = Loggers.init(getClass())
     val info: Unit > IOs = logger.info(infoMessage)
