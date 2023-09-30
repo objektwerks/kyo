@@ -10,8 +10,10 @@ import kyo.envs.Envs
 import kyo.ios.IOs
 import kyo.locals.{Local, Locals}
 import kyo.options.Options
+import kyo.resources.Resources
 import kyo.tries.Tries
 
+import scala.io.{BufferedSource, Codec, Source}
 import scala.util.{Random, Success, Try}
 
 final class EffectTest extends AnyFunSuite with Matchers:
@@ -117,3 +119,9 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     val newIos: Int > IOs = local.let(11)(currentIos.map(_ + 1))
     newIos.map(i => i shouldBe 12)
+
+  test("resources"):
+    val source: BufferedSource > (Resources with IOs) =
+      Resources.acquire(
+        Source.fromFile("./LICENSE", Codec.UTF8.name)
+      )
