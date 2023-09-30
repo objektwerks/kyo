@@ -5,6 +5,7 @@ import org.scalatest.matchers.should.Matchers
 
 import kyo.*
 import kyo.aborts.Aborts
+import kyo.choices.Choices
 import kyo.direct.*
 import kyo.envs.Envs
 import kyo.ios.IOs
@@ -132,3 +133,13 @@ final class EffectTest extends AnyFunSuite with Matchers:
       )
 
     wordCount.map(count => count  shouldBe 1427)
+
+  test("choices"):
+    val choices: Int > Choices = Choices.foreach(List(1, 2))
+
+    val evens: Int > Choices = choices.map(i => Choices.dropIf(i % 2 == 0).map(_ => i))
+
+    val odds: Int > Choices = choices.map(i => Choices.dropIf(i % 2 != 0).map(_ => i))
+
+    evens.map(i => i shouldBe 2)
+    odds.map(i => i shouldBe 1)
