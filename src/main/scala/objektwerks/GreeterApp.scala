@@ -7,9 +7,9 @@ import kyo.consoles.Consoles
 object GreeterApp extends App:
   def run(args: List[String]) = 
     for
-      _    <- Consoles.println("What is your name?")
+      _    <- Consoles.println("*** What is your name?")
       name <- Consoles.readln
-      _    <- Consoles.println(s"Greetings, $name!")
+      _    <- Consoles.println(s"*** Greetings, $name!")
       time <- Clocks.now
-      _    <- Consoles.println(s"The current time is: $time")
+      _    <- Consoles.println(s"*** The current date and time is: $time")
     yield ()
