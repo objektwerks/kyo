@@ -1,11 +1,14 @@
 package objektwerks
 
+import java.time.Instant
+
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import kyo.*
 import kyo.aborts.Aborts
 import kyo.choices.Choices
+import kyo.clocks.*
 import kyo.direct.*
 import kyo.envs.Envs
 import kyo.ios.IOs
@@ -155,6 +158,13 @@ final class EffectTest extends AnyFunSuite with Matchers:
   test("randoms"):
     val randoms: Int > Randoms = Randoms.nextInt
     randoms.map(i => i > 0 shouldBe true)
+
+  test("clocks"):
+    val clock: Instant > Clocks = Clocks.now
+    val logger: Logger = Loggers.init(getClass())
+
+    val datetime: Instant > IOs = Clocks.run(clock)
+    datetime.map(dt => IOs.run( logger.info(s"The current date and time: $dt") ))
 
   test("loggers"):
     val infoMessage = "test log message"
