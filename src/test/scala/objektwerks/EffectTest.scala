@@ -138,8 +138,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val choices: Int > Choices = Choices.foreach(List(1, 2))
 
     val evens: Int > Choices = choices.map(i => Choices.dropIf(i % 2 == 0).map(_ => i))
+    evens.map(i => i shouldBe 2)
 
     val odds: Int > Choices = choices.map(i => Choices.dropIf(i % 2 != 0).map(_ => i))
-
-    evens.map(i => i shouldBe 2)
     odds.map(i => i shouldBe 1)
