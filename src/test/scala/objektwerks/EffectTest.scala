@@ -11,6 +11,7 @@ import kyo.envs.Envs
 import kyo.ios.IOs
 import kyo.locals.{Local, Locals}
 import kyo.options.Options
+import kyo.randoms.Randoms
 import kyo.resources.Resources
 import kyo.tries.Tries
 
@@ -149,3 +150,8 @@ final class EffectTest extends AnyFunSuite with Matchers:
         case _ => Choices.drop
       }
     newChoices.map(i => i shouldBe 1)
+
+  test("randoms"):
+    val randoms: Int > Randoms = Randoms.nextInt
+    randoms.map(i => i > 0 shouldBe true)
+
