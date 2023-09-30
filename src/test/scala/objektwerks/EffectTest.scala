@@ -142,3 +142,10 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     val odds: Int > Choices = choices.map(i => Choices.dropIf(i % 2 != 0).map(_ => i))
     odds.map(i => i shouldBe 1)
+
+    val newChoices: Int > Choices =
+      choices.map {
+        case 1 => 11
+        case _ => Choices.drop
+      }
+    newChoices.map(i => i shouldBe 1)
