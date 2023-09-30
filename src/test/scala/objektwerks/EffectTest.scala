@@ -10,6 +10,7 @@ import kyo.direct.*
 import kyo.envs.Envs
 import kyo.ios.IOs
 import kyo.locals.{Local, Locals}
+import kyo.loggers.{Logger, Loggers}
 import kyo.options.Options
 import kyo.randoms.Randoms
 import kyo.resources.Resources
@@ -155,3 +156,9 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val randoms: Int > Randoms = Randoms.nextInt
     randoms.map(i => i > 0 shouldBe true)
 
+  test("logger"):
+    val infoMessage = "test log message"
+    val logger: Logger = Loggers.init(getClass())
+    val info: Unit > IOs = logger.info(infoMessage)
+    info.map(m => m shouldBe ())
+    IOs.run(info) // see ./target/test.log
