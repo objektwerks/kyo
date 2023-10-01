@@ -19,4 +19,4 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
     val fiber: Int > (Fibers with IOs) = Fibers.fork(factorial(4))
     val result: Fiber[Int] > IOs = Fibers.run(IOs.runLazy(fiber))
     result.map(r => r shouldBe 0)
-    // shouldBe 24, but the fiber is never run!!!
+    // shouldBe 24, but the fiber.map is never evaluated!
