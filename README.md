@@ -8,7 +8,7 @@ Note
 
 >While the simplest of all 3, Kyo still feels cumbersome compared to standard Scala.
 
->Effects are *relatively* straightforward to work with and test; while conncurrent effects are not.
+>Kyo effects are *relatively* straightforward to work with and test; while concurrent effects are not.
 
 >Kyo is still a work-in-progress, though. Moreover, I'm no Kyo guru. :)
 
