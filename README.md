@@ -6,9 +6,9 @@ Note
 ----
 >Kyo is the latest competitor to Scalaz, Cats and Zio.
 
->While the simplest of all 4, Kyo's lazy evaluation still feels cumbersome and unnatural.
+>While the simplest of all 4, Kyo's lazy evaluation still feels cumbersome and unnatural compared to standard Scala.
 
->Effects are ***relatively*** straightforward to work with and test; while conncurrent effects are not.
+>Effects are **relatively** straightforward to work with and test; while conncurrent effects are not.
 
 Build
 -----
