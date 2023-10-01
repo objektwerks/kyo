@@ -10,7 +10,7 @@ Note
 
 >Effects are *relatively* straightforward to work with and test; while conncurrent effects are not.
 
->Kyo is still a work-in-progress, though.
+>Kyo is still a work-in-progress, though. Moreover, I'm not Kyo guru. :)
 
 Build
 -----
