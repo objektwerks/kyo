@@ -4,9 +4,9 @@ Kyo
 
 Note
 ----
->Kyo is the latest competitor to Scalaz, Cats and Zio.
+>Kyo is the latest competitor to Cats and Zio.
 
->While the simplest of all 4, Kyo still feels cumbersome compared to standard Scala.
+>While the simplest of all 3, Kyo still feels cumbersome compared to standard Scala.
 
 >Effects are *relatively* straightforward to work with and test; while conncurrent effects are not.
 
