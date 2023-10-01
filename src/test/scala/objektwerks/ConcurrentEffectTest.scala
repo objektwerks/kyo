@@ -4,6 +4,7 @@ import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import kyo.*
+import kyo.concurrent.channels.{Channel, Channels}
 import kyo.concurrent.fibers.{Fiber, Fibers}
 import kyo.concurrent.queues.{Queue, Queues}
 import kyo.ios.IOs
@@ -24,3 +25,7 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
     val queue: Queue[Int] > IOs = Queues.bounded(capacity = 1)
     val updated: Boolean > IOs = queue.map(_.offer(1))
     IOs.run(updated) shouldBe true
+
+  test("channel"):
+    val channel: Channel[Int] > IOs = Channels.init(capacity = 1)
+    val updated: Unit > (Fibers with IOs) = channel.map(_.put(1))
