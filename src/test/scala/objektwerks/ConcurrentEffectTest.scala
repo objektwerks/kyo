@@ -40,4 +40,4 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
     val fiber: Fiber[Int] > IOs = Fibers.run(IOs.runLazy(take))
     for
       fi <- fiber
-    yield fi.onComplete(i => i shouldBe 1)
+    yield fi.onComplete(i => i shouldBe 1) // Never evaluated!
