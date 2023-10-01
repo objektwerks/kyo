@@ -8,7 +8,7 @@ Note
 
 >While the simplest of all 4, Kyo still feels cumbersome and unnatural compared to standard Scala.
 
->Effects are **relatively** straightforward to work with and test; while conncurrent effects are not.
+>Effects are *relatively* straightforward to work with and test; while conncurrent effects are not.
 
 Build
 -----
