@@ -23,9 +23,21 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
 
   test("queue"):
     val queue: Queue[Int] > IOs = Queues.bounded(capacity = 1)
-    val updated: Boolean > IOs = queue.map(_.offer(1))
-    IOs.run(updated) shouldBe true
+
+    val offer: Boolean > IOs = queue.map(_.offer(1))
+    IOs.run(offer) shouldBe true
+
+    val poll: Option[Int] > IOs = queue.map(_.poll)
+    IOs.run(poll) shouldBe None // Should be Some(1)
 
   test("channel"):
     val channel: Channel[Int] > IOs = Channels.init(capacity = 1)
-    val updated: Unit > (Fibers with IOs) = channel.map(_.put(1))
+
+    val put: Unit > (Fibers with IOs) = channel.map(_.put(1))
+    Fibers.run(IOs.runLazy(put))
+
+    val take: Int > (Fibers with IOs) = channel.map(_.take)
+    val fiber: Fiber[Int] > IOs = Fibers.run(IOs.runLazy(take))
+    for
+      fi <- fiber
+    yield fi.onComplete(i => i shouldBe 1)
