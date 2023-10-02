@@ -33,29 +33,12 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
 
   test("channel"):
     val channel: Channel[Int] > IOs = Channels.init(capacity = 1)
-
-    val put: Unit > (Fibers with IOs) = channel.map(_.put(1))
-    val putFiber: Fiber[Unit] > IOs = Fibers.run(IOs.runLazy(put))
-    for
-      u: Unit <- put
-      fu: Fiber[Unit] <- putFiber
-    yield
-      u shouldBe () // Never evaluated!
-      fu.get shouldBe () // Never evaluated!
-    defer {
-      val i = await(put)
-      i shouldBe ()
+    val channelInt: Channel[Int] = IOs.run(channel)
+    val fiber: Int > (Fibers with IOs) = defer {
+      await( channelInt.put(1) )
+      val i = await( channelInt.take )
+      i shouldBe 1 // Never evaluates!
+      i
     }
-
-    val take: Int > (Fibers with IOs) = channel.map(_.take)
-    val takeFiber: Fiber[Int] > IOs = Fibers.run(IOs.runLazy(take))
-    for
-      i: Int <- take
-      fi: Fiber[Int] <- takeFiber
-    yield
-      i shouldBe 1 // Never evaluated!
-      fi shouldBe 1 // Never evaluated!
-    defer {
-      val i: Int = await(take)
-      i shouldBe 1 // Never evaluated!
-    }
+    val result: Fiber[Int] >IOs = Fibers.run(IOs.runLazy(fiber))
+    Fibers.run(IOs.runLazy(result)) // Dead end! Other Channel code compiles, but doesn't evaluate!
