@@ -10,14 +10,7 @@ import kyo.concurrent.queues.{Queue, Queues}
 import kyo.direct.*
 import kyo.ios.IOs
 
-import scala.annotation.tailrec
-
 final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
-  @tailrec
-  def factorial(n: Int, acc: Int = 1): Int = n match
-    case i if i < 1 => acc
-    case _ => factorial(n - 1, acc * n)
-
   test("fiber"):
     val fiber: Fiber[Int] = Fibers.value( factorial(4) )
     fiber.onComplete(f => f shouldBe 24) // Other Fiber code compiles, but doesn't evaluate!
