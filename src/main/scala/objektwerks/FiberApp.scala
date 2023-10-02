@@ -7,7 +7,7 @@ import kyo.loggers.Loggers
 
 import scala.annotation.tailrec
 
-object FactorialApp extends App:
+object FiberApp extends App:
   val logger = Loggers.init(getClass())
 
   @tailrec
