@@ -12,7 +12,7 @@ Note
 
 >Fibers, Queues and Channels, for instance, often fail to evaluate in a unit test. But all work in a Kyo App.
 
->Kyo contains an innovative *defer / await* construct; yet *for comprehensions* are never far way.
+>Kyo contains an innovative *defer / await* construct; yet *for comprehensions* are never far behind.
 
 >Kyo is still a work-in-progress. See the **Resources** section below for details.
 
