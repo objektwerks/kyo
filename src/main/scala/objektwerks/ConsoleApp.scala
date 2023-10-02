@@ -8,7 +8,7 @@ import kyo.loggers.Loggers
 object ConsoleApp extends App:
   val logger = Loggers.init(getClass())
 
-  def run(args: List[String]) = 
+  def run(args: List[String]) =
     for
       _        <- Consoles.println("*** What is your name?")
       name     <- Consoles.readln
