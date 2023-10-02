@@ -43,7 +43,10 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
       fu.get shouldBe () // Never evaluated!
 
     val take: Int > (Fibers with IOs) = channel.map(_.take)
-    Fibers.run(IOs.runLazy(take))
+    val takeFiber: Fiber[Int] > IOs = Fibers.run(IOs.runLazy(take))
     for
       i <- take
-    yield i shouldBe 0 // Never evaluated!
+      fi <- takeFiber
+    yield
+      i shouldBe 1 // Never evaluated!
+      fi shouldBe 1 // Never evaluated!
