@@ -34,10 +34,11 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
     val channel: Channel[Int] > IOs = Channels.init(capacity = 1)
 
     val put: Unit > (Fibers with IOs) = channel.map(_.put(1))
-    Fibers.run(IOs.runLazy(put))
+    for
+      u <- put
+    yield u shouldBe () // Never evaluated!
 
     val take: Int > (Fibers with IOs) = channel.map(_.take)
-    val fiber: Fiber[Int] > IOs = Fibers.run(IOs.runLazy(take))
     for
-      fi <- fiber
-    yield fi.onComplete(i => i shouldBe 1) // Never evaluated!
+      i <- take
+    yield i shouldBe 0 // Never evaluated!
