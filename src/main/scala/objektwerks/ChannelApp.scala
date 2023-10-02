@@ -10,7 +10,7 @@ object ChannelApp extends App:
   
   def run(args: List[String]) =
     for
-      channel   <- Channels.init[Int](capacity = 3)
+      channel   <- Channels.init[Int](capacity = 1)
       _         <- Consoles.println("*** Enter a number:")
       candidate <- Consoles.readln
       number    =  candidate.toIntOption.getOrElse(1)
