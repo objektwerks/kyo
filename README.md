@@ -26,8 +26,8 @@ Run
 ```
 Multiple main classes detected. Select one to run:
  [1] objektwerks.ChannelApp
- [2] objektwerks.FiberApp
- [3] objektwerks.GreeterApp
+ [2] objektwerks.ConsoleApp
+ [3] objektwerks.FiberApp
  [4] objektwerks.QueueApp
 
 Enter number:
