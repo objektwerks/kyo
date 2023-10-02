@@ -13,8 +13,8 @@ object ConsoleApp extends App:
       _    <- Consoles.println("*** What is your name?")
       name <- Consoles.readln
       _    <- Consoles.println(s"*** Greetings, $name!")
+      _    <- logger.info(s"*** Greetings, $name!")
       time <- Clocks.now
       _    <- Consoles.println(s"*** The current date and time is: $time")
-      _    <- logger.info(s"*** Greetings, $name!")
       _    <- logger.info(s"*** The current date and time is: $time")
     yield ()
