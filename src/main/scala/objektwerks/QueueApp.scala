@@ -18,6 +18,6 @@ object QueueApp extends App:
       offer     <- queue.map(_.offer(number))
       _         <- Consoles.println(s"*** Offer of $number succeeded: $offer")
       poll      <- queue.map(_.poll)
-      _         <- Consoles.println(s"*** Queued: ${poll.getOrElse(-1)}")
-      _         <- logger.info(s"*** Queued: ${poll.getOrElse(-1)}")
+      _         <- Consoles.println(s"*** Polled: ${poll.getOrElse(-1)}")
+      _         <- logger.info(s"*** Polled: ${poll.getOrElse(-1)}")
     yield ()
