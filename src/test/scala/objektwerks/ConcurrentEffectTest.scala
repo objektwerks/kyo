@@ -7,6 +7,7 @@ import kyo.*
 import kyo.concurrent.channels.{Channel, Channels}
 import kyo.concurrent.fibers.{Fiber, Fibers}
 import kyo.concurrent.queues.{Queue, Queues}
+import kyo.direct.*
 import kyo.ios.IOs
 
 import scala.annotation.tailrec
@@ -36,17 +37,25 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
     val put: Unit > (Fibers with IOs) = channel.map(_.put(1))
     val putFiber: Fiber[Unit] > IOs = Fibers.run(IOs.runLazy(put))
     for
-      u <- put
-      fu <- putFiber
+      u: Unit <- put
+      fu: Fiber[Unit] <- putFiber
     yield
       u shouldBe () // Never evaluated!
       fu.get shouldBe () // Never evaluated!
+    defer {
+      val i = await(put)
+      i shouldBe ()
+    }
 
     val take: Int > (Fibers with IOs) = channel.map(_.take)
     val takeFiber: Fiber[Int] > IOs = Fibers.run(IOs.runLazy(take))
     for
-      i <- take
-      fi <- takeFiber
+      i: Int <- take
+      fi: Fiber[Int] <- takeFiber
     yield
       i shouldBe 1 // Never evaluated!
       fi shouldBe 1 // Never evaluated!
+    defer {
+      val i: Int = await(take)
+      i shouldBe 1 // Never evaluated!
+    }
