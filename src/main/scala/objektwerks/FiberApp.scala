@@ -15,7 +15,7 @@ object FiberApp extends App:
     case i if i < 1 => acc
     case _ => factorial(n - 1, acc * n)
 
-  def run(args: List[String]) = 
+  def run(args: List[String]) =
     for
       _         <- Consoles.println("*** Enter a factorial candidate:")
       candidate <- Consoles.readln
