@@ -5,8 +5,15 @@ import kyo.concurrent.fibers.Fibers
 import kyo.consoles.Consoles
 import kyo.loggers.Loggers
 
+import scala.annotation.tailrec
+
 object FactorialApp extends App:
   val logger = Loggers.init(getClass())
+
+  @tailrec
+  def factorial(n: Int, acc: Int = 1): Int = n match
+    case i if i < 1 => acc
+    case _ => factorial(n - 1, acc * n)
 
   def run(args: List[String]) = 
     for
