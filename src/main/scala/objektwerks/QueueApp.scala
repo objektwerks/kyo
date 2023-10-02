@@ -15,8 +15,9 @@ object QueueApp extends App:
       _         <- Consoles.println("*** Enter a number:")
       candidate <- Consoles.readln
       number    =  candidate.toIntOption.getOrElse(1)
-      _         <- queue.map(_.offer(number))
-      queued    <- queue.map(_.poll)
-      _         <- Consoles.println(s"*** Queued: ${queued.getOrElse(-1)}")
-      _         <- logger.info(s"*** Queued: ${queued.getOrElse(-1)}")
+      offer     <- queue.map(_.offer(number))
+      _         <- Consoles.println("*** Offer of $number succeeded: $offer")
+      poll      <- queue.map(_.poll)
+      _         <- Consoles.println(s"*** Queued: ${poll.getOrElse(-1)}")
+      _         <- logger.info(s"*** Queued: ${poll.getOrElse(-1)}")
     yield ()
