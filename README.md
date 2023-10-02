@@ -25,6 +25,14 @@ Test
 Run
 ---
 1. sbt clean run
+```
+Multiple main classes detected. Select one to run:
+ [1] objektwerks.FactorialApp
+ [2] objektwerks.GreeterApp
+ [3] objektwerks.QueueApp
+
+Enter number: 
+```
 
 Resources
 ---------
