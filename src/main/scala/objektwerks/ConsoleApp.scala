@@ -5,7 +5,7 @@ import kyo.clocks.Clocks
 import kyo.consoles.Consoles
 import kyo.loggers.Loggers
 
-object GreeterApp extends App:
+object ConsoleApp extends App:
   val logger = Loggers.init(getClass())
 
   def run(args: List[String]) = 
