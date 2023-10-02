@@ -16,6 +16,7 @@ object QueueApp extends App:
       number    =  candidate.toIntOption.getOrElse(1)
       offer     <- queue.offer(number)
       _         <- Consoles.println(s"*** Offer of $number succeeded: $offer")
+      _         <- logger.info(s"*** Offer of $number succeeded: $offer")
       poll      <- queue.poll
       _         <- Consoles.println(s"*** Polled: ${poll.getOrElse(-1)}")
       _         <- logger.info(s"*** Polled: ${poll.getOrElse(-1)}")
