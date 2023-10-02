@@ -14,7 +14,7 @@ Note
 
 >Kyo contains an innovative *defer / await* construct; yet *for comprehensions* are never far way.
 
->Kyo is still a work-in-progress, though. Moreover, I'm no Kyo guru. :)
+>Kyo is still a work-in-progress, though. See the **Resources** section below for more details.
 
 Build
 -----
