@@ -10,6 +10,8 @@ Note
 
 >Kyo effects are *relatively* straightforward to work with and test; while concurrent effects are not.
 
+>Fibers, Queues and Channels, for instance, often fail to evaluate in a unit test. But work in a Kyo App.
+
 >Kyo is still a work-in-progress, though. Moreover, I'm no Kyo guru. :)
 
 Build
