@@ -19,7 +19,7 @@ final class ConcurrentEffectTest extends AnyFunSuite with Matchers:
 
   test("fiber"):
     val fiber: Fiber[Int] = Fibers.value( factorial(4) )
-    fiber.onComplete(f => f shouldBe 24)
+    fiber.onComplete(f => f shouldBe 24) // Other Fiber code compiles, but doesn't evaluate!
 
   test("queue"):
     val queue: Queue[Int] > IOs = Queues.bounded(capacity = 1)
