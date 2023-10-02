@@ -27,11 +27,12 @@ Run
 1. sbt clean run
 ```
 Multiple main classes detected. Select one to run:
- [1] objektwerks.FactorialApp
- [2] objektwerks.GreeterApp
- [3] objektwerks.QueueApp
+ [1] objektwerks.ChannelApp
+ [2] objektwerks.FactorialApp
+ [3] objektwerks.GreeterApp
+ [4] objektwerks.QueueApp
 
-Enter number: 
+Enter number:
 ```
 
 Resources
