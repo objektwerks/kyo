@@ -16,7 +16,8 @@ object ChannelApp extends App:
       number    =  candidate.toIntOption.getOrElse(1)
       _         <- channel.put(number)
       _         <- Consoles.println(s"*** Put number: $number")
+      _         <- logger.info(s"*** Put number: $number")
       take      <- channel.take
       _         <- Consoles.println(s"*** Take number: $take")
-      _         <- logger.info(s"*** Take: $take")
+      _         <- logger.info(s"*** Take number: $take")
     yield ()
