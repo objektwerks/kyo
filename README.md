@@ -33,6 +33,7 @@ Multiple main classes detected. Select one to run:
  [2] objektwerks.ConsoleApp
  [3] objektwerks.FiberApp
  [4] objektwerks.QueueApp
+ [5] objektwerks.RandomApp
 
 Enter number:
 ```
