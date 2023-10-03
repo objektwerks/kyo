@@ -161,8 +161,6 @@ final class EffectTest extends AnyFunSuite with Matchers:
     yield r should be > 0
 
   test("loggers"):
-    val infoMessage = "*** Test log message."
     val logger: Logger = Loggers.init(getClass())
-    val info: Unit > IOs = logger.info(infoMessage)
-    info.map(m => m shouldBe ())
+    val info: Unit > IOs = logger.info("*** Test log message.")
     IOs.run(info) // see ./target/test.log
