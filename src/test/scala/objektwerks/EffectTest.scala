@@ -153,7 +153,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
         case 1 => 11
         case _ => Choices.drop
       }
-    newChoices.map(i => i shouldBe 1)
+    Choices.run(newChoices) shouldBe List(11)
 
   test("randoms"):
     val randoms: Int > Randoms = Randoms.nextInt
