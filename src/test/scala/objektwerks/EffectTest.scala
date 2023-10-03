@@ -134,7 +134,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
         source.map(file => file.mkString.split("\\W+").length)
       )
 
-    wordCount.map(count => count  shouldBe 1427)
+    IOs.run(wordCount) shouldBe 1609
 
   test("choices"):
     val choices: Int > Choices = Choices.foreach(List(1, 2))
