@@ -49,13 +49,14 @@ final class EffectTest extends AnyFunSuite with Matchers:
       val b: Option[Int] > Tries = Options.run(a)
       val c: Try[Option[Int]] > Any = Tries.run(b)
       c.pure
+
+    optionsFirst( Options.get(Some(1)) ) shouldBe Success( Some(1) )
+    optionsFirst( Tries.get(Success(1)) ) shouldBe Success( Some(1) )
+
     def triesFirst(a: Int > (Options with Tries)): Option[Try[Int]] =
       val b: Try[Int] > Options = Tries.run(a)
       val c: Option[Try[Int]] > Any = Options.run(b)
       c.pure
-
-    optionsFirst( Options.get(Some(1)) ) shouldBe Success( Some(1) )
-    optionsFirst( Tries.get(Success(1)) ) shouldBe Success( Some(1) )
 
     triesFirst( Options.get(Some(1)) ) shouldBe Some( Success(1) )
     triesFirst( Tries.get(Success(1)) ) shouldBe Some( Success(1) )
