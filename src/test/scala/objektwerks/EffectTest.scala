@@ -98,7 +98,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
   test("ios"):
     val apply: Int > IOs = IOs(1)
-    apply.map(i => i >= 1 shouldBe true)
+    apply.map(i => i shouldBe 1)
 
     val value: Int > IOs = IOs.value(1)
     value.map(i => i shouldBe 1)
@@ -118,10 +118,10 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val local: Local[Int] = Locals.init(defaultValue)
 
     val currentIos: Int > IOs = local.get
-    currentIos.map(i => i shouldBe 1)
+    IOs.run(currentIos) shouldBe 1
 
     val newIos: Int > IOs = local.let(11)(currentIos.map(_ + 1))
-    newIos.map(i => i shouldBe 12)
+    IOs.run(newIos) shouldBe 12
 
   test("resources"):
     val source: BufferedSource > (Resources with IOs) =
