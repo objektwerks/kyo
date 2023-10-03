@@ -15,12 +15,12 @@ import kyo.ios.IOs
 import kyo.locals.{Local, Locals}
 import kyo.loggers.{Logger, Loggers}
 import kyo.options.Options
-import kyo.randoms.Randoms
+import kyo.randoms.{Random, Randoms}
 import kyo.resources.Resources
 import kyo.tries.Tries
 
 import scala.io.{BufferedSource, Codec, Source}
-import scala.util.{Random, Success, Try}
+import scala.util.{Success, Try}
 
 final class EffectTest extends AnyFunSuite with Matchers:
   test("empty"):
@@ -100,7 +100,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     catching.map(i => i shouldBe 0)
 
   test("ios"):
-    val apply: Int > IOs = IOs(Random.nextInt(1))
+    val apply: Int > IOs = IOs(1)
     apply.map(i => i >= 1 shouldBe true)
 
     val value: Int > IOs = IOs.value(1)
@@ -156,8 +156,12 @@ final class EffectTest extends AnyFunSuite with Matchers:
     Choices.run(newChoices) shouldBe List(11)
 
   test("randoms"):
-    val randoms: Int > Randoms = Randoms.nextInt
-    randoms.map(i => i > 0 shouldBe true)
+    val random: Int > (Envs[Random] with IOs) = defer {
+      await( Randoms.nextInt )
+    }
+    for
+      r <- random
+    yield r should be > 0
 
   test("clocks"):
     val clock: Instant > Clocks = Clocks.now
