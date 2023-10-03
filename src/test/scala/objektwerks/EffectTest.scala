@@ -1,14 +1,11 @@
 package objektwerks
 
-import java.time.Instant
-
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import kyo.*
 import kyo.aborts.Aborts
 import kyo.choices.Choices
-import kyo.clocks.*
 import kyo.direct.*
 import kyo.envs.Envs
 import kyo.ios.IOs
