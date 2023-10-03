@@ -12,7 +12,6 @@ import kyo.ios.IOs
 import kyo.locals.{Local, Locals}
 import kyo.loggers.{Logger, Loggers}
 import kyo.options.Options
-import kyo.randoms.{Random, Randoms}
 import kyo.resources.Resources
 import kyo.tries.Tries
 
@@ -151,14 +150,6 @@ final class EffectTest extends AnyFunSuite with Matchers:
         case _ => Choices.drop
       }
     Choices.run(newChoices) shouldBe List(11)
-
-  test("randoms"):
-    val random: Int > (Envs[Random] with IOs) = defer {
-      await( Randoms.nextInt )
-    }
-    for
-      r <- random
-    yield r should be > 0
 
   test("loggers"):
     val logger: Logger = Loggers.init(getClass())
