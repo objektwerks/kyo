@@ -10,11 +10,11 @@ object RandomApp extends App:
 
   def run(args: List[String]) =
     for
-      a        <- Randoms.nextInt
+      a        <- Randoms.nextInt(11)
       _        <- Consoles.println(s"*** Random number: $a")
-      b        <- Randoms.nextInt
+      b        <- Randoms.nextInt(11)
       _        <- Consoles.println(s"*** Random number: $b")
-      c        <- Randoms.nextInt
+      c        <- Randoms.nextInt(11)
       _        <- Consoles.println(s"*** Random number: $c")
       t        = a + b + c
       _        <- Consoles.println(s"*** Random numbers ($a + $b + $c) total: $t!")
