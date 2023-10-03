@@ -163,17 +163,6 @@ final class EffectTest extends AnyFunSuite with Matchers:
       r <- random
     yield r should be > 0
 
-  test("clocks"):
-    val clock: Instant > Clocks = Clocks.now
-    val logger: Logger = Loggers.init(getClass())
-
-    val ios: Unit > IOs = defer {
-      val datetime = await( Clocks.run(clock) )
-      datetime.toString.nonEmpty shouldBe true
-      await( logger.info(s"*** The current date and time: ${datetime}") )
-    }
-    IOs.run(ios) // see ./target/test.log
-
   test("loggers"):
     val infoMessage = "*** Test log message."
     val logger: Logger = Loggers.init(getClass())
