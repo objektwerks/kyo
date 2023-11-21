@@ -5,10 +5,10 @@ import org.scalatest.matchers.should.Matchers
 
 import kyo.*
 import kyo.aborts.Aborts
-import kyo.choices.Choices
 import kyo.direct.*
 import kyo.envs.Envs
 import kyo.ios.IOs
+import kyo.lists.Lists
 import kyo.locals.{Local, Locals}
 import kyo.loggers.{Logger, Loggers}
 import kyo.options.Options
@@ -136,21 +136,21 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     IOs.run(wordCount) shouldBe 1609
 
-  test("choices"):
-    val choices: Int > Choices = Choices.foreach(List(1, 2))
+  test("lists"):
+    val lists: Int > Lists = Lists.foreach(List(1, 2))
 
-    val evens: Int > Choices = choices.map(i => Choices.dropIf(i % 2 == 0).map(_ => i))
-    Choices.run(evens) shouldBe List(2)
+    val evens: Int > Lists = lists.map(i => Lists.dropIf(i % 2 == 0).map(_ => i))
+    Lists.run(evens) shouldBe List(2)
 
-    val odds: Int > Choices = choices.map(i => Choices.dropIf(i % 2 != 0).map(_ => i))
-    Choices.run(odds) shouldBe List(1)
+    val odds: Int > Lists = lists.map(i => Lists.dropIf(i % 2 != 0).map(_ => i))
+    Lists.run(odds) shouldBe List(1)
 
-    val newChoices: Int > Choices =
-      choices.map {
+    val newLists: Int > Lists =
+      lists.map {
         case 1 => 11
-        case _ => Choices.drop
+        case _ => Lists.drop
       }
-    Choices.run(newChoices) shouldBe List(11)
+    Lists.run(newLists) shouldBe List(11)
 
   test("loggers"):
     val logger: Logger = Loggers.init(getClass())
