@@ -10,7 +10,7 @@ object QueueApp extends App:
   
   def run(args: List[String]) =
     for
-      queue     <- Queues.initBounded[Int](capacity = 1)
+      queue     <- Queues.init[Int](capacity = 1)
       _         <- Consoles.println("*** Enter a number:")
       candidate <- Consoles.readln
       number    =  candidate.toIntOption.getOrElse(1)
