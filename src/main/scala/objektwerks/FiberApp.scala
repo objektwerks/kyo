@@ -3,13 +3,11 @@ package objektwerks
 import kyo.*
 import kyo.concurrent.fibers.Fibers
 import kyo.consoles.Consoles
-import kyo.loggers.Loggers
+import kyo.logs.Logs
 
 import scala.annotation.tailrec
 
 object FiberApp extends App:
-  val logger = Loggers.init(getClass())
-
   @tailrec
   def factorial(n: Int, acc: Int = 1): Int = n match
     case i if i < 1 => acc
@@ -22,5 +20,5 @@ object FiberApp extends App:
       number    =  candidate.toIntOption.getOrElse(1)
       factorial <- Fibers.run( factorial(number) )
       _         <- Consoles.println(s"*** Factorial of $number is: $factorial")
-      _         <- logger.info(s"*** Factorial of $number is: $factorial")
+      _         <- Logs.info(s"*** Factorial of $number is: $factorial")
     yield ()
