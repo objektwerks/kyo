@@ -3,10 +3,9 @@ package objektwerks
 import kyo.*
 import kyo.concurrent.channels.Channels
 import kyo.consoles.Consoles
-import kyo.loggers.Loggers
+import kyo.logs.Logs
 
 object ChannelApp extends App:
-  val logger = Loggers.init(getClass())
   
   def run(args: List[String]) =
     for
@@ -16,8 +15,8 @@ object ChannelApp extends App:
       number    =  candidate.toIntOption.getOrElse(1)
       _         <- channel.put(number)
       _         <- Consoles.println(s"*** Put number: $number")
-      _         <- logger.info(s"*** Put number: $number")
+      _         <- Logs.info(s"*** Put number: $number")
       take      <- channel.take
       _         <- Consoles.println(s"*** Take number: $take")
-      _         <- logger.info(s"*** Take number: $take")
+      _         <- Logs.info(s"*** Take number: $take")
     yield ()
