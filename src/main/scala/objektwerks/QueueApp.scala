@@ -3,11 +3,9 @@ package objektwerks
 import kyo.*
 import kyo.concurrent.queues.Queues
 import kyo.consoles.Consoles
-import kyo.loggers.Loggers
+import kyo.logs.Logs
 
 object QueueApp extends App:
-  val logger = Loggers.init(getClass())
-  
   def run(args: List[String]) =
     for
       queue     <- Queues.init[Int](capacity = 1)
@@ -16,8 +14,8 @@ object QueueApp extends App:
       number    =  candidate.toIntOption.getOrElse(1)
       offer     <- queue.offer(number)
       _         <- Consoles.println(s"*** Offer of $number succeeded: $offer")
-      _         <- logger.info(s"*** Offer of $number succeeded: $offer")
+      _         <- Logs.info(s"*** Offer of $number succeeded: $offer")
       poll      <- queue.poll
       _         <- Consoles.println(s"*** Polled: ${poll.getOrElse(-1)}")
-      _         <- logger.info(s"*** Polled: ${poll.getOrElse(-1)}")
+      _         <- Logs.info(s"*** Polled: ${poll.getOrElse(-1)}")
     yield ()
