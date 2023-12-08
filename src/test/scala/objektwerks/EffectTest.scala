@@ -10,7 +10,7 @@ import kyo.envs.Envs
 import kyo.ios.IOs
 import kyo.lists.Lists
 import kyo.locals.{Local, Locals}
-import kyo.loggers.{Logger, Loggers}
+import kyo.logs.Logs
 import kyo.options.Options
 import kyo.resources.Resources
 import kyo.tries.Tries
@@ -152,7 +152,6 @@ final class EffectTest extends AnyFunSuite with Matchers:
       }
     Lists.run(newLists) shouldBe List(11)
 
-  test("loggers"):
-    val logger: Logger = Loggers.init(getClass())
-    val info: Unit > IOs = logger.info("*** Test log message.")
+  test("logs"):
+    val info: Unit > IOs = Logs.info("*** Test log message.")
     IOs.run(info) // see ./target/test.log
