@@ -3,18 +3,16 @@ package objektwerks
 import kyo.*
 import kyo.clocks.Clocks
 import kyo.consoles.Consoles
-import kyo.loggers.Loggers
+import kyo.logs.Logs
 
 object ConsoleApp extends App:
-  val logger = Loggers.init(getClass())
-
   def run(args: List[String]) =
     for
       _        <- Consoles.println("*** What is your name?")
       name     <- Consoles.readln
       _        <- Consoles.println(s"*** Greetings, $name!")
-      _        <- logger.info(s"*** Greetings, $name!")
+      _        <- Logs.info(s"*** Greetings, $name!")
       datetime <- Clocks.now
       _        <- Consoles.println(s"*** The current date and time is: $datetime")
-      _        <- logger.info(s"*** The current date and time is: $datetime")
+      _        <- Logs.info(s"*** The current date and time is: $datetime")
     yield ()
