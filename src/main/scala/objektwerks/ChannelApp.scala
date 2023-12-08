@@ -6,7 +6,6 @@ import kyo.consoles.Consoles
 import kyo.logs.Logs
 
 object ChannelApp extends App:
-  
   def run(args: List[String]) =
     for
       channel   <- Channels.init[Int](capacity = 1)
