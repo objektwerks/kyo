@@ -8,7 +8,7 @@ import kyo.aborts.Aborts
 import kyo.direct.*
 import kyo.envs.Envs
 import kyo.ios.IOs
-import kyo.lists.Lists
+import kyo.seqs.Seqs
 import kyo.locals.{Local, Locals}
 import kyo.logs.Logs
 import kyo.options.Options
@@ -136,21 +136,21 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     IOs.run(wordCount) shouldBe 1609
 
-  test("lists"):
-    val lists: Int > Lists = Lists.foreach(List(1, 2))
+  test("seqs"):
+    val seqs: Int > Seqs = Seqs.get(Seq(1, 2))
 
-    val evens: Int > Lists = lists.map(i => Lists.dropIf(i % 2 == 0).map(_ => i))
-    Lists.run(evens) shouldBe List(2)
+    val evens: Int > Seqs = seqs.map(i => Seqs.filter(i % 2 == 0).map(_ => i))
+    Seqs.run(evens) shouldBe List(2)
 
-    val odds: Int > Lists = lists.map(i => Lists.dropIf(i % 2 != 0).map(_ => i))
-    Lists.run(odds) shouldBe List(1)
+    val odds: Int > Seqs = seqs.map(i => Seqs.filter(i % 2 != 0).map(_ => i))
+    Seqs.run(odds) shouldBe List(1)
 
-    val newLists: Int > Lists =
-      lists.map {
+    val newSeqs: Int > Seqs =
+      seqs.map {
         case 1 => 11
-        case _ => Lists.drop
+        case _ => Seqs.drop
       }
-    Lists.run(newLists) shouldBe List(11)
+    Seqs.run(newSeqs) shouldBe List(11)
 
   test("logs"):
     val info: Unit > IOs = Logs.info("*** Test log message.")
