@@ -69,7 +69,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
         b + c
       }
 
-    val classic: Int > (Tries with Options) =
+    val classic: Int > (Tries & Options) =
       Options.get( Some(1) ).map { b =>
         Tries.get( Try(1) ).map { c =>
           b + c
