@@ -36,7 +36,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
   test("map"):
     val o: Int > Options = Options.get( Some(1) )
-    val t: Int > (Options with Tries) = o
+    val t: Int > (Options & Tries) = o
     o.map(v => t.map(_ + v)) shouldBe 2
 
   test("flatmap"):
