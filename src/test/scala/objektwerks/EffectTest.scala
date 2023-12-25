@@ -31,7 +31,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     Tries.run(iot) shouldBe Success(1)
 
   test("direct widening"):
-    val ot: Int > (Options with Tries) = 1
+    val ot: Int > (Options & Tries) = 1
     ot shouldBe 1
 
   test("map"):
