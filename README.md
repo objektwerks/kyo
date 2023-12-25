@@ -27,3 +27,4 @@ Enter number:
 Resources
 ---------
 * [Kyo Github](https://github.com/getkyo/kyo#)
+* [Kyo Docs](https://getkyo.io/#/)
