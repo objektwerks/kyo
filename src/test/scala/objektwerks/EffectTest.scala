@@ -45,7 +45,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     o.flatMap(v => t.map(_ + v)) shouldBe 2
 
   test("order"):
-    def optionsFirst(a: Int > (Options with Tries)): Try[Option[Int]] =
+    def optionsFirst(a: Int > (Options & Tries)): Try[Option[Int]] =
       val b: Option[Int] > Tries = Options.run(a)
       val c: Try[Option[Int]] > Any = Tries.run(b)
       c.pure
