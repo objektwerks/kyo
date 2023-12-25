@@ -26,7 +26,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
   test("widening"):
     val i: Int > Any = 1
     val io: Int > Options = i
-    val iot: Int > (Options with Tries) = io
+    val iot: Int > (Options & Tries) = io
     Options.run(io) shouldBe Some(1)
     Tries.run(iot) shouldBe Success(1)
 
