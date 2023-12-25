@@ -124,7 +124,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     IOs.run(newIos) shouldBe 12
 
   test("resources"):
-    val source: BufferedSource > (Resources with IOs) =
+    val source: BufferedSource > (Resources & IOs) =
       Resources.acquire(
         Source.fromFile("./LICENSE", Codec.UTF8.name)
       )
