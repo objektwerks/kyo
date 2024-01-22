@@ -1,9 +1,6 @@
 package objektwerks
 
 import kyo.*
-import kyo.concurrent.queues.Queues
-import kyo.consoles.Consoles
-import kyo.logs.Logs
 
 object QueueApp extends App:
   def run(args: List[String]) =
