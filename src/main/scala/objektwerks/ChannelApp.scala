@@ -1,7 +1,6 @@
 package objektwerks
 
 import kyo.*
-import kyo.{Channels, Consoles, Logs}
 
 object ChannelApp extends App:
   def run(args: List[String]) =

@@ -1,9 +1,6 @@
 package objektwerks
 
 import kyo.*
-import kyo.concurrent.fibers.Fibers
-import kyo.consoles.Consoles
-import kyo.logs.Logs
 
 import scala.annotation.tailrec
 
