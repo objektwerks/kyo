@@ -1,9 +1,6 @@
 package objektwerks
 
 import kyo.*
-import kyo.consoles.Consoles
-import kyo.logs.Logs
-import kyo.randoms.Randoms
 
 object RandomApp extends App:
   def run(args: List[String]) =
