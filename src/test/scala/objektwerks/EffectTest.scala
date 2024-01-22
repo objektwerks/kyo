@@ -1,19 +1,10 @@
 package objektwerks
 
+import kyo.*
+import kyo.direct.*
+
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
-
-import kyo.*
-import kyo.aborts.Aborts
-import kyo.direct.*
-import kyo.envs.Envs
-import kyo.ios.IOs
-import kyo.seqs.Seqs
-import kyo.locals.{Local, Locals}
-import kyo.logs.Logs
-import kyo.options.Options
-import kyo.resources.Resources
-import kyo.tries.Tries
 
 import scala.io.{BufferedSource, Codec, Source}
 import scala.util.{Success, Try}
