@@ -1,9 +1,7 @@
 package objektwerks
 
 import kyo.*
-import kyo.clocks.Clocks
-import kyo.consoles.Consoles
-import kyo.logs.Logs
+import kyo.{Clocks, Consoles, Logs}
 
 object ConsoleApp extends App:
   def run(args: List[String]) =
