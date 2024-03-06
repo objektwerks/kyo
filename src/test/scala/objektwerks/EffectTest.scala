@@ -1,13 +1,11 @@
 package objektwerks
 
 import kyo.*
-import kyo.direct.*
 
 import org.scalatest.funsuite.AnyFunSuite
 import org.scalatest.matchers.should.Matchers
 
 import scala.io.{BufferedSource, Codec, Source}
-import scala.util.{Success, Try}
 
 final class EffectTest extends AnyFunSuite with Matchers:
   test("empty"):
@@ -17,62 +15,21 @@ final class EffectTest extends AnyFunSuite with Matchers:
   test("widening"):
     val i: Int < Any = 1
     val io: Int < Options = i
-    val iot: Int < (Options & Tries) = io
     Options.run(io) shouldBe Some(1)
-    Tries.run(iot) shouldBe Success(1)
 
   test("direct widening"):
-    val ot: Int < (Options & Tries) = 1
-    ot shouldBe 1
+    val o: Int < (Options) = 1
+    o shouldBe 1
 
   test("map"):
     val o: Int < Options = Options.get( Some(1) )
-    val t: Int < (Options & Tries) = o
+    val t: Int < (Options) = o
     o.map(v => t.map(_ + v)) shouldBe 2
 
   test("flatmap"):
     val o: Int < Options = Options.get( Some(1) )
-    val t: Int < (Options & Tries) = o
+    val t: Int < (Options) = o
     o.flatMap(v => t.map(_ + v)) shouldBe 2
-
-  test("order"):
-    def optionsFirst(a: Int < (Options & Tries)): Try[Option[Int]] =
-      val b: Option[Int] < Tries = Options.run(a)
-      val c: Try[Option[Int]] < Any = Tries.run(b)
-      c.pure
-
-    optionsFirst( Options.get(Some(1)) ) shouldBe Success( Some(1) )
-    optionsFirst( Tries.get(Success(1)) ) shouldBe Success( Some(1) )
-
-    def triesFirst(a: Int < (Options & Tries)): Option[Try[Int]] =
-      val b: Try[Int] < Options = Tries.run(a)
-      val c: Option[Try[Int]] < Any = Options.run(b)
-      c.pure
-
-    triesFirst( Options.get(Some(1)) ) shouldBe Some( Success(1) )
-    triesFirst( Tries.get(Success(1)) ) shouldBe Some( Success(1) )
-
-  test("direct"):
-    val direct: Int < (Tries & Options) =
-      defer {
-        val b: Int = await( Options.get( Some(1) ) )
-        val c: Int = await( Tries.get( Try(1) ) )
-        b + c
-      }
-
-    val classic: Int < (Tries & Options) =
-      Options.get( Some(1) ).map { b =>
-        Tries.get( Try(1) ).map { c =>
-          b + c
-        }
-      }
-
-    for
-      d <- direct
-      c <- classic
-    yield
-      d shouldBe c
-      d + c shouldBe 4
 
   test("aborts"):
     val right: Int < Aborts[String] = Aborts[String].get( Right(1) )
@@ -91,7 +48,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val apply: Int < IOs = IOs(1)
     apply.map(i => i shouldBe 1)
 
-    val value: Int < IOs = IOs.value(1)
+    val value: Int < IOs = IOs(1)
     value.map(i => i shouldBe 1)
 
   test("envs"):
