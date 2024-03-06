@@ -2,6 +2,10 @@ Kyo
 ---
 >Kyo feature tests using Scala 3.
 
+Note
+----
+>**Tries** were removed in version *0.8.7*, which impacted **EffectTest**.
+
 Build
 -----
 1. sbt clean compile
