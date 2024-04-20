@@ -84,22 +84,6 @@ final class EffectTest extends AnyFunSuite with Matchers:
 
     IOs.run(wordCount) shouldBe 1609
 
-  test("seqs"):
-    val seqs: Int < Seqs = Seqs.get(Seq(1, 2))
-
-    val evens: Int < Seqs = seqs.map(i => Seqs.filter(i % 2 == 0).map(_ => i))
-    Seqs.run(evens) shouldBe List(2)
-
-    val odds: Int < Seqs = seqs.map(i => Seqs.filter(i % 2 != 0).map(_ => i))
-    Seqs.run(odds) shouldBe List(1)
-
-    val newSeqs: Int < Seqs =
-      seqs.map {
-        case 1 => 11
-        case _ => Seqs.drop
-      }
-    Seqs.run(newSeqs) shouldBe List(11)
-
   test("logs"):
     val info: Unit < IOs = Logs.info("*** Test log message.")
     IOs.run(info) // see ./target/test.log

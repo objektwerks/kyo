@@ -3,7 +3,7 @@ organization := "objektwerks"
 version := "0.1-SNAPSHOT"
 scalaVersion := "3.4.2-RC1"
 libraryDependencies ++= {
-  val kyoVersion = "0.9.1"
+  val kyoVersion = "0.9.2"
   Seq(
     "io.getkyo" %% "kyo-core" % kyoVersion,
     "io.getkyo" %% "kyo-direct" % kyoVersion,
