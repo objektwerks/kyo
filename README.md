@@ -2,9 +2,10 @@ Kyo
 ---
 >Kyo feature tests using Scala 3.
 
-Note
-----
->**Tries** were removed in version *0.8.7*, which impacted **EffectTest**.
+Notes
+-----
+* **Tries** were removed in version *0.8.7*.
+* **Seqs** were removed in version *0.9.2*.
 
 Build
 -----
