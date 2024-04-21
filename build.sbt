@@ -7,7 +7,7 @@ libraryDependencies ++= {
   Seq(
     "io.getkyo" %% "kyo-core" % kyoVersion,
     "io.getkyo" %% "kyo-direct" % kyoVersion,
-    "ch.qos.logback" % "logback-classic" % "1.5.5",
+    "ch.qos.logback" % "logback-classic" % "1.5.6",
     "org.scalatest" %% "scalatest" % "3.2.18" % Test
   )
 }
