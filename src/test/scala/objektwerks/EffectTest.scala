@@ -32,16 +32,16 @@ final class EffectTest extends AnyFunSuite with Matchers:
     o.flatMap(v => t.map(_ + v)) shouldBe 2
 
   test("aborts"):
-    val right: Int < Aborts[String] = Aborts[String].get( Right(1) )
+    val right: Int < Aborts[String] = Aborts.get( Right(1) )
     right.map(i => i shouldBe 1)
 
-    val left: Int < Aborts[String] = Aborts[String].get( Left("Failure!") )
+    val left: Int < Aborts[String] = Aborts.get( Left("Failure!") )
     left.map(i => i shouldBe 0)
 
-    val fail: Int < Aborts[String] = Aborts[String].fail("Fail!")
+    val fail: Int < Aborts[String] = Aborts.fail("Fail!")
     fail.map(i => i shouldBe 0)
 
-    val catching: Int < Aborts[Exception] = Aborts[Exception].catching( throw new Exception("Execption") )
+    val catching: Int < Aborts[Exception] = Aborts.catching( throw new Exception("Execption") )
     catching.map(i => i shouldBe 0)
 
   test("ios"):
@@ -58,7 +58,7 @@ final class EffectTest extends AnyFunSuite with Matchers:
     val db = new Db:
       def count = 1
 
-    val query: Int < IOs = Envs[Db].run(db)(db.count)
+    val query: Int < IOs = Envs.run(db)(db.count)
     query.map(i => i shouldBe 1)
 
   test("locals"):
