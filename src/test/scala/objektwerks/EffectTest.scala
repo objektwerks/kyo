@@ -77,12 +77,12 @@ final class EffectTest extends AnyFunSuite with Matchers:
         Source.fromFile("./LICENSE", Codec.UTF8.name)
       )
 
-    val wordCount: Int < IOs =
+    val wordCount: Int < Fibers =
       Resources.run(
         source.map(file => file.mkString.split("\\W+").length)
       )
 
-    IOs.run(wordCount) shouldBe 1609
+    Resources.run(wordCount).map { count => count shouldBe 1609 }
 
   test("logs"):
     val info: Unit < IOs = Logs.info("*** Test log message.")
