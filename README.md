@@ -6,6 +6,7 @@ Notes
 -----
 * **Tries** were removed in version *0.8.7*.
 * **Seqs** were removed in version *0.9.2*.
+* Version *0.11.0* removed most plurals and destroyed EffectTest.
 
 Build
 -----
