@@ -12,10 +12,10 @@ object FiberApp extends App:
 
   def run(args: List[String]) =
     for
-      _         <- Consoles.println("*** Enter a factorial candidate:")
-      candidate <- Consoles.readln
+      _         <- Console.println("*** Enter a factorial candidate:")
+      candidate <- Console.readln
       number    =  candidate.toIntOption.getOrElse(1)
-      factorial <- Fibers.run( factorial(number) )
-      _         <- Consoles.println(s"*** Factorial of $number is: $factorial")
-      _         <- Logs.info(s"*** Factorial of $number is: $factorial")
+      factorial <- Async.run( factorial(number) )
+      _         <- Console.println(s"*** Factorial of $number is: $factorial")
+      _         <- Log.info(s"*** Factorial of $number is: $factorial")
     yield ()
