@@ -4,7 +4,7 @@ import kyo.*
 
 import scala.annotation.tailrec
 
-object FiberApp extends App:
+object AsyncApp extends App:
   @tailrec
   def factorial(n: Int, acc: Int = 1): Int = n match
     case i if i < 1 => acc
