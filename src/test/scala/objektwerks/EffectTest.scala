@@ -1,8 +1,7 @@
 package objektwerks
 
-import org.scalatest.funsuite.AnyFunSuite
-import org.scalatest.matchers.should.Matchers
+import munit.FunSuite
 
-final class EffectTest extends AnyFunSuite with Matchers:
+final class EffectTest extends FunSuite:
   test("todo"):
-    println("The upgrade to version 0.11.0 broke this test!")
+    println("*** The upgrade to version 0.11.0 destroyed the original test! Must rebuild!")
