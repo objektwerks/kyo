@@ -2,10 +2,6 @@ Kyo
 ---
 >Kyo feature tests using Scala 3.
 
-Todo
-----
-1. Replace Scalatest with MUnit.
-
 Notes
 -----
 * **Tries** were removed in version *0.8.7*.
