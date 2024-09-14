@@ -22,9 +22,9 @@ final class EffectTest extends FunSuite:
     assertEquals(answer, 4)
 
   test("direct"):
-    def concat(a: String, b: String): String < (IO & IO) =
+    def add(x: Int, y: Int): Int < (IO & IO) =
       defer:
-        await(IO(a)) + await(IO(b))
+        await(IO(x)) + await(IO(y))
 
-    val answer = concat("a", "b").evalNow.getOrElse("")
-    assertEquals(answer, "ab")
+    val answer = add(1, 2).evalNow.getOrElse(0)
+    assertEquals(answer, 3)
