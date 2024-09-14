@@ -35,3 +35,4 @@ Resources
 * [Kyo Github](https://github.com/getkyo/kyo#)
 * [Kyo Docs](https://getkyo.io/#/)
 * [Algebraic Effects from Scratch by Kit Langton](https://www.youtube.com/watch?v=qPvPdRbTF-E)
+* [MUnit Docs](https://scalameta.org/munit/)
