@@ -6,7 +6,7 @@ Notes
 -----
 * **Tries** were removed in version ***0.8.7***.
 * **Seqs** were removed in version ***0.9.2***.
-* Version ***0.11.0*** was a ***massive*** refactoring.
+* A ***massive*** refactoring occurred in version ***0.11.0***.
 
 Build
 -----
