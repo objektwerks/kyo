@@ -1,6 +1,6 @@
 Kyo
 ---
->Kyo feature tests using Scala 3.
+>Kyo feature tests using MUnit and Scala 3.
 
 Notes
 -----
