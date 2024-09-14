@@ -11,6 +11,7 @@ libraryDependencies ++= {
     "org.scalameta" %% "munit" % "1.0.1" % Test
   )
 }
+parallelExecution := false
 scalacOptions ++= Seq(
   "-Wunused:all"
 )
