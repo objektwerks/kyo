@@ -2,8 +2,8 @@ package objektwerks
 
 import kyo.*
 
-object RandomApp extends App:
-  def run(args: List[String]) =
+object RandomApp extends KyoApp:
+  run:
     for
       a        <- Random.nextInt(11)
       _        <- Console.println(s"*** Random number: $a")
