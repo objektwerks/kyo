@@ -24,7 +24,7 @@ final class EffectTest extends FunSuite:
   test("direct"):
     def concat(a: String, b: String): String < (Abort[Exception] & IO) =
       defer:
-          await(IO(a)) + await(Abort.get(Right(b)))
+        await(IO(a)) + await(IO(b))
 
     val answer = concat("a", "b").evalNow.getOrElse("")
     assertEquals(answer, "ab")
