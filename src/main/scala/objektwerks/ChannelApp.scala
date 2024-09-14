@@ -2,8 +2,8 @@ package objektwerks
 
 import kyo.*
 
-object ChannelApp extends App:
-  def run(args: List[String]) =
+object ChannelApp extends KyoApp:
+  run:
     for
       channel   <- Channel.init[Int](capacity = 1)
       _         <- Console.println("*** Enter a number:")
