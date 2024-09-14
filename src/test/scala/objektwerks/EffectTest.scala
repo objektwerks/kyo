@@ -9,7 +9,7 @@ import munit.FunSuite
   * Rebuilding will take time.
   */
 final class EffectTest extends FunSuite:
-  test("no effect > eval"):
+  test("no effect"):
     val i: Int < Any = 1
     val j: Int = i.eval
     assertEquals(j, 1)
