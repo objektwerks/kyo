@@ -2,8 +2,8 @@ package objektwerks
 
 import kyo.*
 
-object ConsoleApp extends App:
-  def run(args: List[String]) =
+object ConsoleApp extends KyoApp:
+  run:
     for
       _        <- Console.println("*** What is your name?")
       name     <- Console.readln
