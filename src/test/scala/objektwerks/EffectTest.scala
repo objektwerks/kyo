@@ -22,7 +22,7 @@ final class EffectTest extends FunSuite:
     assertEquals(answer, 4)
 
   test("direct"):
-    def concat(a: String, b: String): String < (Abort[Exception] & IO) =
+    def concat(a: String, b: String): String < (IO & IO) =
       defer:
         await(IO(a)) + await(IO(b))
 
