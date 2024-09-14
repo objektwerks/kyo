@@ -12,4 +12,4 @@ final class EffectTest extends FunSuite:
   test("eval"):
     val i: Int < Any = 1
     val j: Int = i.eval
-    assert(j == 1)
+    assertEquals(j, 1)
