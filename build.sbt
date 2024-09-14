@@ -1,6 +1,6 @@
 name := "kyo"
 organization := "objektwerks"
-version := "0.1"
+version := "0.2-SNAPSHOT"
 scalaVersion := "3.5.1-RC2"
 libraryDependencies ++= {
   val kyoVersion = "0.12.0"
