@@ -26,5 +26,5 @@ final class EffectTest extends FunSuite:
       defer:
         await(IO(x)) + await(IO(y))
 
-    val answer = add(1, 2).evalNow.getOrElse(0)
+    val answer = IO.run(add(1, 2)).eval
     assertEquals(answer, 3)
