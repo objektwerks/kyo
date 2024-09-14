@@ -28,3 +28,9 @@ final class EffectTest extends FunSuite:
 
     val answer = IO.run(add(1, 2)).eval
     assertEquals(answer, 3)
+
+  test("abort"):
+    val a: String < Abort[String] = Abort.get(Right("succeeded"))
+    val b: String < Abort[String] = Abort.get(Left("failed"))
+    assert( Abort.run(a).eval.isSuccess )
+    assert( Abort.run(b).eval.isFail )
