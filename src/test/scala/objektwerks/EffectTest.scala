@@ -41,3 +41,9 @@ final class EffectTest extends FunSuite:
 
     val catching: String < Abort[Exception] = Abort.catching(throw new Exception)
     assert( Abort.run(catching).eval.isFail )
+
+  test("io"):
+    def triple(i: Int): Int < IO = i * i * i
+
+    val answer = IO.run(triple(2)).eval
+    assertEquals(answer, 8)
