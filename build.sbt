@@ -1,7 +1,7 @@
 name := "kyo"
 organization := "objektwerks"
 version := "0.3-SNAPSHOT"
-scalaVersion := "3.7.1-RC1"
+scalaVersion := "3.7.1-RC2"
 libraryDependencies ++= {
   val kyoVersion = "0.19.0"
   Seq(
