@@ -12,11 +12,10 @@ object AsyncApp extends KyoApp:
 
   run:
     for
-      _         <- Console.println("*** Enter a factorial candidate:")
-      candidate <- Console.readln
+      _         <- Console.print("*** Enter a factorial candidate:")
+      candidate <- Console.readLine
       number    =  candidate.toIntOption.getOrElse(1)
-      fiber     <- Async.run( factorial(number) )
-      result    <- fiber.get
-      _         <- Console.println(s"*** Factorial of $number is: $result")
+      result    <- Async.defer( factorial(number) )
+      _         <- Console.print(s"*** Factorial of $number is: $result")
       _         <- Log.info(s"*** Factorial of $number is: $result")
     yield result
