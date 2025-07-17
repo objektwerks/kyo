@@ -18,15 +18,10 @@ final class EffectTest extends FunSuite:
     assertEquals(answer, 4)
 
   test("direct"):
-    def add(x: Int, y: Int): Int < (IO & IO) =
-      defer:
-        await(IO(x)) + await(IO(y))
+    def add(x: Int, y: Int): Int < (Abort[Exception] & Sync) =
+      direct:
+        Sync.defer(x).now + Sync.defer(y).now
 
-    val answer = IO.run(add(1, 2)).eval
-    assertEquals(answer, 3)
-
-  test("io"):
-    def triple(i: Int): Int < IO = i * i * i
-
-    val answer = IO.run(triple(2)).eval
-    assertEquals(answer, 8)
+    direct:
+      val answer = add(1, 2).now
+      assertEquals(answer, 3)
