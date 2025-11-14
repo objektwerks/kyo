@@ -7,7 +7,7 @@ libraryDependencies ++= {
   Seq(
     "io.getkyo" %% "kyo-core" % kyoVersion,
     "io.getkyo" %% "kyo-direct" % kyoVersion,
-    "ch.qos.logback" % "logback-classic" % "1.5.20",
+    "ch.qos.logback" % "logback-classic" % "1.5.21",
     "org.scalameta" %% "munit" % "1.2.1" % Test
   )
 }
