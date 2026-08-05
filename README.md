@@ -2,6 +2,10 @@ Kyo
 ---
 >Kyo feature tests using MUnit and Scala 3.
 
+Todo
+----
+1. Rewrite project when Kyo 1.0 is released.
+
 Notes
 -----
 * **Tries** were removed in version ***0.8.7***.
