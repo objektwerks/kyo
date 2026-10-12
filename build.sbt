@@ -8,7 +8,7 @@ libraryDependencies ++= {
     "io.getkyo" %% "kyo-core" % kyoVersion,
     "io.getkyo" %% "kyo-direct" % kyoVersion,
     "ch.qos.logback" % "logback-classic" % "1.6.5",
-    "org.scalameta" %% "munit" % "1.3.1" % Test
+    "org.scalameta" %% "munit" % "1.3.2" % Test
   )
 }
 parallelExecution := false
